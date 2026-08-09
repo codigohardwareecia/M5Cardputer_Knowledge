@@ -85,3 +85,15 @@ Escolha **apenas uma** das duas opções abaixo para gravar o programa no seu di
 3. Clique no botão **Download** ao lado do aplicativo encontrado.
     
 4. Conecte o seu Cardputer via USB, selecione a porta correta e clique em **Burn**.
+
+#### Como acessar
+
+Inicialmente o cardpurter vai oferecer um Access Point Wifi conecte se a rede MyPersonalKbApp com senha 12345678
+Acesse a url http://192.168.4.1/config
+Informe um hostname
+Informe o nome da sua rede Wifi
+Clique em Salvar
+O Cardputer vai reiniciar
+Desconecte-se do AccessPoint
+Faça o acesso pelo  hostname ou IP da sua rede Wifi
+
