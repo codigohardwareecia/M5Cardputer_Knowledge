@@ -88,12 +88,12 @@ Escolha **apenas uma** das duas opções abaixo para gravar o programa no seu di
 
 #### Como acessar
 
-Inicialmente o cardpurter vai oferecer um Access Point Wifi conecte se a rede MyPersonalKbApp com senha 12345678
-Acesse a url http://192.168.4.1/config
-Informe um hostname
-Informe o nome da sua rede Wifi
-Clique em Salvar
-O Cardputer vai reiniciar
-Desconecte-se do AccessPoint
-Faça o acesso pelo  hostname ou IP da sua rede Wifi
+1. Inicialmente o cardpurter vai oferecer um Access Point Wifi conecte se a rede MyPersonalKbApp com senha 12345678
+2. Acesse a url http://192.168.4.1/config
+3. Informe um hostname
+4. Informe o nome da sua rede Wifi
+5. Clique em Salvar
+6. O Cardputer vai reiniciar
+7. Desconecte-se do AccessPoint
+8. Faça o acesso pelo  hostname ou IP da sua rede Wifi
 
