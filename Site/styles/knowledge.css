@@ -1,0 +1,318 @@
+/* Reset básico */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa;
+  overflow: hidden;
+}
+
+/* Container Principal */
+.app-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+}
+
+/* --- SIDEBAR ESQUERDA --- */
+.sidebar {
+  width: 300px;
+  background-color: #1e293b;
+  color: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #334155;
+  flex-shrink: 0;
+  transition: left 0.3s ease-in-out;
+}
+
+.sidebar-header {
+  padding: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  border-bottom: 1px solid #334155;
+  background-color: #0f172a;
+}
+
+/* Campo de Busca na Sidebar */
+.sidebar-search {
+  padding: 12px 15px;
+  border-bottom: 1px solid #334155;
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: #182232;
+}
+
+.sidebar-search .search-icon {
+  position: absolute;
+  left: 25px;
+  color: #94a3b8;
+  font-size: 13px;
+}
+
+.sidebar-search input {
+  width: 100%;
+  padding: 8px 10px 8px 32px;
+  background-color: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  color: #f8fafc;
+  font-size: 13px;
+  outline: none;
+}
+
+.sidebar-search input:focus {
+  border-color: #2563eb;
+}
+
+/* Lista de Pastas e Itens */
+.sidebar-menu {
+  list-style: none;
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* Estilo do Título da Pasta (Clicável) */
+.group-header {
+  padding: 12px 15px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #e2e8f0;
+  background-color: #0f172a;
+  border-bottom: 1px solid #1e293b;
+  border-top: 1px solid #334155;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.2s;
+}
+
+.group-header:hover {
+  background-color: #182232;
+  color: #ffffff;
+}
+
+/* Estilo para a pasta selecionada (com outra cor de destaque) */
+.group-header.active-group {
+  background-color: rgba(13, 110, 253, 0.25) !important;
+  border-left: 4px solid #0d6efd;
+  color: #ffffff;
+}
+
+.pasta-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pasta-seta {
+  font-size: 11px;
+  color: #94a3b8;
+  transition: transform 0.2s ease;
+}
+
+/* Seta rotacionada para pastas recolhidas */
+.group-header.fechada .pasta-seta {
+  transform: rotate(-90deg);
+}
+
+/* Container dos itens da pasta */
+.grupo-itens {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Estilo dos Itens dentro das Pastas */
+.item-knowledge {
+  padding: 10px 20px 10px 35px;
+  cursor: pointer;
+  border-bottom: 1px solid #334155;
+  transition: background 0.2s;
+  font-size: 13.5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #cbd5e1;
+}
+
+.item-knowledge:hover {
+  background-color: #334155;
+  color: #ffffff;
+}
+
+.item-knowledge.active {
+  background-color: #2563eb;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.no-results {
+  padding: 20px;
+  color: #94a3b8;
+  font-size: 13px;
+  text-align: center;
+}
+
+/* --- LADO DIREITO --- */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #ffffff;
+}
+
+.top-bar {
+  height: 60px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e2e8f0;
+  background-color: #ffffff;
+}
+
+.top-bar h3 {
+  color: #1e293b;
+  font-size: 18px;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.btn-primary {
+  background-color: #2563eb;
+  color: white;
+}
+
+.btn-secondary {
+  background-color: #64748b;
+  color: white;
+}
+
+.btn-success {
+  background-color: #28a745;
+  color: white;
+}
+
+.editor-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Ajustes EasyMDE */
+.EasyMDEContainer {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.CodeMirror {
+  flex: 1;
+  height: auto !important;
+  border: none !important;
+  font-size: 15px;
+  padding: 10px;
+}
+
+.editor-toolbar {
+  border-left: none !important;
+  border-right: none !important;
+  border-top: none !important;
+  border-color: #e2e8f0 !important;
+}
+
+#custom-context-menu {
+  min-width: 150px;
+  padding: 5px 0;
+  border-radius: 4px;
+}
+
+#custom-context-menu .dropdown-item {
+  padding: 8px 15px;
+  font-size: 14px;
+  display: block;
+  text-decoration: none;
+}
+
+#custom-context-menu .dropdown-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* --- RESPONSIVIDADE (CELULAR / MOBILE - SIDEBAR DESLIZANTE) --- */
+@media (max-width: 768px) {
+  /* Exibe o botão do menu hambúrguer no celular */
+  #btn-toggle-sidebar {
+    display: inline-block !important;
+  }
+
+  /* A sidebar vira um painel flutuante retrátil */
+  .sidebar {
+    position: fixed !important;
+    top: 0;
+    left: -300px; /* Escondida totalmente para fora da tela */
+    height: 100vh;
+    z-index: 99999;
+    width: 280px;
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Quando ativada via JS, desliza para dentro da tela */
+  .sidebar.mobile-open {
+    left: 0 !important;
+  }
+
+  /* Fundo escuro translúcido ao abrir o menu */
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 99998;
+  }
+  
+  .sidebar-overlay.active {
+    display: block;
+  }
+
+  .main-content {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .top-bar {
+    padding: 0 10px;
+  }
+
+  .actions button {
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+}

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Base de Conhecimento - Treeview</title>
+
+  <!-- CSS de estilo local -->
+  <link rel="stylesheet" href="styles/knowledge.css">
+
+  <!-- CSS do Font Awesome Local -->
+  <link rel="stylesheet" href="styles/font-awesome.min.css">
+  
+  <!-- CSS do EasyMDE Local -->
+  <link rel="stylesheet" href="styles/easymde.min.css">
+
+  <!-- jQuery CDN -->
+  <script src="scripts/jquery-3.7.1.min.js"></script>
+
+  <!-- PDF.js Scripts (CDN para renderização de PDFs) -->
+  <script src="scripts/pdf.min.js"></script>
+  <script>
+    // Configura o worker do PDF.js para processamento em segundo plano
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'scripts/pdf.worker.min.js';
+  </script>
+
+</head>
+<body>
+
+  <!-- Overlay escuro para fechar o menu no celular -->
+  <div class="sidebar-overlay"></div>
+
+  <div class="app-container">
+    
+    <!-- LADO ESQUERDO: Sidebar de Pastas Retráteis -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <i class="fa fa-book"></i> Base de Conhecimento
+      </div>
+      
+      <!-- Adicionar nova pasta -->
+      <div style="padding: 5px;" class="d-flex align-items-center justify-content-end gap-4 px-4 py-3">
+          <!-- Botão Home -->
+          <a href="#" id="btn-home" style="padding: 5px; color: white !important; text-decoration: none;" title="Home">
+              <i class="fas fa-home fa-lg"></i>
+          </a>
+
+          <!-- Botão Novo Grupo -->
+          <a href="#" id="btn-addGroup" style="padding: 5px; color: white !important; text-decoration: none;" title="Novo Grupo">
+              <i class="fas fa-folder-plus fa-lg"></i>
+          </a>
+
+          <!-- Botão para subir PDF -->
+          <a href="#" id="btn-uploadPdf" style="padding: 5px; color: white !important; text-decoration: none;" title="Subir PDF">
+              <i class="fas fa-file-pdf fa-lg"></i>
+          </a>
+      </div>
+
+      <!-- Caixa de Busca -->
+      <div class="sidebar-search">
+        <i class="fa fa-search search-icon"></i>
+        <input type="text" id="input-search" placeholder="Buscar item de conhecimento...">
+      </div>
+
+      <!-- Lista Dinâmica de Pastas e Itens -->
+      <ul class="sidebar-menu" id="list-knowledge-groups"></ul>
+    </aside>
+
+    <!-- LADO DIREITO: Topo + Editor / Visualizador -->
+    <main class="main-content">
+      
+      <!-- Barra de Ações -->
+      <header class="top-bar">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <!-- Botão Hambúrguer para Celular -->
+          <button id="btn-toggle-sidebar" class="btn btn-secondary" style="padding: 6px 10px; display: none;" title="Menu">
+            <i class="fa fa-bars"></i>
+          </button>
+          <h3 id="titulo-topico" style="margin: 0;">Selecione um item...</h3>
+        </div>
+        <div class="actions">
+          <button id="btn-newKnowledge" class="btn btn-success"><i class="fa fa-plus"></i> Novo .MD</button>
+          <button id="btn-modo" class="btn btn-secondary">Apenas Leitura</button>
+          <button id="btn-saveKnowledge" class="btn btn-primary">Salvar .MD</button>
+        </div>
+      </header>
+
+      <!-- Container do Editor (Markdown) -->
+      <div class="editor-wrapper">
+        <textarea id="editor"></textarea>
+      </div>
+
+      <!-- Container do Visualizador de PDF (Oculto por padrão, ativado via JS) -->
+      <div id="pdf-viewer-container" style="display: none; text-align: center; overflow: auto; height: 100%; padding: 10px;">
+        <canvas id="pdf-canvas" style="border: 1px solid #ccc; max-width: 100%; box-shadow: 0 2px 5px rgba(0,0,0,0.2);"></canvas>
+        <div id="pdf-controls" style="margin-top: 15px; padding-bottom: 15px;">
+          <button id="prev-page" class="btn btn-secondary">Página Anterior</button>
+          <span style="margin: 0 15px; font-weight: bold;">Página: <span id="page-num"></span> / <span id="page-count"></span></span>
+          <button id="next-page" class="btn btn-secondary">Próxima Página</button>
+        </div>
+      </div>
+
+      <!-- Indicador de Loading -->
+      <div id="loading-spinner" style="display: none; text-align: center; padding: 50px;">
+        <i class="fa fa-spinner fa-spin fa-3x fa-fw" style="color: #007bff;"></i>
+        <span style="display: block; margin-top: 10px; font-weight: bold; color: #555;">Carregando arquivo...</span>
+      </div>
+
+      <!-- Mensagem de Feedback (Toast) -->
+      <div id="toast-message" style="display: none; position: fixed; top: 20px; right: 20px; z-index: 9999; padding: 12px 20px; border-radius: 5px; color: #fff; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.2); transition: opacity 0.3s ease;"></div>
+    
+      <!-- Menu de Contexto Personalizado -->
+      <div id="custom-context-menu" class="dropdown-menu" style="display: none; position: absolute; z-index: 10000; background-color: #2b3035; border: 1px solid #495057; box-shadow: 0 4px 8px rgba(0,0,0,0.3);">
+        <a href="#" class="dropdown-item" id="ctx-rename" style="color: #ffffff !important; text-decoration: none;"><i class="fa fa-pencil fa-fw mr-2"></i> Renomear</a>
+        <a href="#" class="dropdown-item" id="ctx-delete" style="color: #dc3545 !important; text-decoration: none;"><i class="fa fa-trash fa-fw mr-2"></i> Excluir</a>
+      </div>
+    </main>
+
+  </div>
+
+  <!-- JS Local -->
+  <script src="scripts/easymde.min.js"></script>
+  <script src="scripts/knowledge.js"></script>
+
+</body>
+</html>
