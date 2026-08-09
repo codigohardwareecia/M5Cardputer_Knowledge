@@ -13,11 +13,12 @@ Base de conhecimento portátil para ser utilizada no **Cardputer Clássico** e *
 
 1. Formate o seu cartão SD no formato **FAT32**.
     
-2. Baixe o pacote de arquivos do site clicando [neste link do GitHub](https://github.com/codigohardwareecia/M5Cardputer_Knowledge/blob/main/site.zip).
+2. Baixe o pacote de arquivos do site.zip ou clicando em
+(https://github.com/codigohardwareecia/M5Cardputer_Knowledge/blob/main/site.zip).
     
-3. Descompacte todo o conteúdo diretamente na **raiz** do cartão SD.
+4. Descompacte todo o conteúdo diretamente na **raiz** do cartão SD.
     
-4. Certifique-se de que a estrutura na raiz do cartão ficou exatamente assim:
+5. Certifique-se de que a estrutura na raiz do cartão ficou exatamente assim:
     
     - `index.html`
         
@@ -27,7 +28,7 @@ Base de conhecimento portátil para ser utilizada no **Cardputer Clássico** e *
         
     - `styles/`
         
-5. Insira o cartão SD preparado no **slot para cartão SD** localizado na lateral do seu Cardputer.
+6. Insira o cartão SD preparado no **slot para cartão SD** localizado na lateral do seu Cardputer.
     
 
 ### Passo 2: Gravação do Firmware
